@@ -19,6 +19,13 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
 /**
+ * Informatics 143
+ * AccelKeyboard, a touch-free keyboard for Android
+ * Melvin Chien and Danny Ngo
+ * January 22, 2013
+ * Code based off of SoftKeyboard sample from Android SDK samples
+ * 
+ * 
  * Example of writing an input method for a soft keyboard. This code is focused on simplicity over completeness, so it
  * should in no way be considered to be a complete soft keyboard implementation. Its purpose is to provide a basic
  * example for how you would get started writing an input method, to be fleshed out as appropriate.
@@ -85,7 +92,7 @@ public class AccelKeyboard extends InputMethodService implements KeyboardView.On
 		qwertyKeyboard = new LatinKeyboard(this, R.xml.qwerty);
 		curIndex = 0;
 		keys = qwertyKeyboard.getKeys();
-		//curKey = keys.get(curIndex);
+		// curKey = keys.get(curIndex);
 		Log.i("keys", Integer.toString(keys.size()));
 	}
 
@@ -114,18 +121,19 @@ public class AccelKeyboard extends InputMethodService implements KeyboardView.On
 			}
 			// tilting up
 			else if (ansX < -2.5) {
-				nextIndex -= 12;
+				nextIndex -= 11;
 				if (nextIndex >= 0) {
 					curIndex = nextIndex;
 				}
 			}
 			// tilting down
 			else if (ansX > 2.5) {
-				nextIndex += 12;
+				nextIndex += 11;
 				if (nextIndex <= 43) {
 					curIndex = nextIndex;
 				}
 			}
+
 			prevKey.pressed = false;
 			curKey = keys.get(curIndex);
 			curKey.pressed = true;
@@ -138,6 +146,8 @@ public class AccelKeyboard extends InputMethodService implements KeyboardView.On
 			curKey = keys.get(curIndex);
 			String result = Float.toString(event[0].values[0]);
 			accelX = Float.toString(event[0].values[1]);
+			Log.i("accelX", accelX);
+			Log.i("accelY", result);
 			return result;
 		}
 	}
