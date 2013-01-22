@@ -23,7 +23,7 @@ import android.view.inputmethod.InputConnection;
  * AccelKeyboard, a touch-free keyboard for Android
  * Melvin Chien and Danny Ngo
  * January 22, 2013
- * Code based off of SoftKeyboard sample from Android SDK samples
+ * Modified code based off of SoftKeyboard sample from Android SDK samples
  * 
  * 
  * Example of writing an input method for a soft keyboard. This code is focused on simplicity over completeness, so it
